@@ -41,3 +41,75 @@ print("df.loc[1]:", df.loc[1])   # accessing a row using label
 print("df.iloc[1]:", df.iloc[1])  # accessing a row using integer position
 print("df.head():", df.head())     # accessing first 5 rows of the dataframe
 print("df.describe():", df.describe()) # getting summary statistics of the dataframe
+
+
+#########   why pandas is used   #########
+#              need                                        pandas feature
+#->Handle CSV/Excel/SQL data formats        -> read_csv(),read_excel(),read_sql()
+#->filter,clean and transform               ->.loc[],.iloc[],.dropna(),.fillna(),.apply(),.map()
+#->group data and summarize data            -> .groupby(),.agg(),.pivot_table()
+#->Integarte with visualization               works well with libraries like matplotlib,seaborn,plotly etc.
+
+
+#########   ways of Creating a series #########
+#-> from a list
+s1=list(range(10,50,10))
+series1=pd.Series(s1)
+print("series1:", series1)
+#-> from a numpy array
+import numpy as np
+
+s2=np.array([5,10,15,20])
+series2=pd.Series(s2)
+print("series2:", series2)
+#-> from a dictionary
+s3={'a':1,'b':2,'c':3,'d':4}
+series3=pd.Series(s3)
+print("series3:", series3)
+#-> from a scalar value
+series4=pd.Series(10,index=['a','b','c','d'])
+print("series4:", series4)
+# from a list with custom index
+s5=list(range(1,5))
+series5=pd.Series(s5,index=['w','x','y','z'])
+print("series5:", series5)
+
+#########  accessing elements in a series  #########
+#-> using labels
+print("series5['x']:", series5['x'])
+#-> using integer position
+print("series5.iloc[1]:", series5.iloc[1])
+#-> using boolean indexing
+print("series5[series5>2]:", series5[series5>2])
+#-> using .loc[] and .iloc[]
+print("series5.loc['y']:", series5.loc['y'])
+print("series5.iloc[2]:", series5.iloc[2])
+
+############## operations on series ##############
+#-> arithmetic operations
+s6=series5*2
+print("series5*2:", s6)
+s7=series5+10
+print("series5+10:", s7)
+s8=series5*series5
+print("series5*series5:", s8)
+#-> statistical operations
+print("series5.mean():", series5.mean())
+print("series5.median():", series5.median())
+print("series5.std():", series5.std())
+print("series5.sum():", series5.sum())
+print("series5.min():", series5.min())
+print("series5.max():", series5.max())
+
+####### real world uses of series ########
+#-> time series data
+#-> stock prices, weather data, etc.
+#-> representing a column in a dataframe
+#-> example: creating a series for the 'Age' column in the dataframe created earlier
+#Applying vectorized operations on a single value in a series
+
+
+######### pandas DataFrame  #########
+
+
+
