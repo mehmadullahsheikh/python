@@ -37,4 +37,56 @@ print(np.sum(c,axis=0))
 print(np.sum(c,axis=1))
 print(np.mean(c,axis=0))
 
+## speed comparison of numpy and list comprehension
+import time
+import numpy as np
+#-> list comprehension
+N=1000000
+a=list(range(N))
+b=list(range(N))
+start=time.time()
+result=[a[i]*b[i] for i in range(len(a))]
+end=time.time()
+print("List comprehension time:",end-start)
+#-> numpy
+a=np.arange(N)
+b=np.arange(N)
+start=time.time()
+result=a*b
+end=time.time()
+print("Numpy time:",end-start)
+
+# matrix multiplication using numpy and list comprehension
+N=1000
+#-> list comprehension
+a=[[i+j for j in range(N)] for i in range(N)]
+b=[[i-j for j in range(N)] for i in range(N)]
+c=[[0 for j in range(N)] for i in range(N)]
+start=time.time()
+for i in range(N):
+    for j in range(N):
+        c[i][j]=sum(a[i][k]*b[k][j] for k in range(N))
+end=time.time()
+print("List comprehension matrix multiplication time:",end-start)
+#-> numpy
+a1=np.array([[i+j for j in range(N)] for i in range(N)])
+b1=np.array([[i-j for j in range(N)] for i in range(N)])
+c1=np.zeros((N,N))
+start=time.time()
+c1=a1 @ b1  # matrix multiplication using @ operator
+end=time.time()
+print("Numpy matrix multiplication time:",end-start)
+
+## numpy role in machine learning
+#-> data manipulation and preprocessing
+#-> linear algebra operations
+#-> random number generation
+#-> performance optimization
+#-> integration with other libraries like pandas, scikit-learn, tensorflow, etc.
+#-> example: data normalization using numpy
+# feature engineering
+#model training and evaluation
+
+
+
 
